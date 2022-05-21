@@ -5,6 +5,8 @@ from django.views.generic import View
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from gestion_usuarios.forms import FormularioAutenticacion, FormularioRegistro
+
 
 
 # Create your views here.
@@ -13,10 +15,10 @@ def inicio(request):
     return render(request, "gestion_usuarios/inicio.html")
 
 
-class registro(View):
+"""class registro(View):
     def get(self, request):
         form=UserCreationForm()
-        return render(request, "gestion_usuarios/registro.html", {"form": form})
+        return render(request, "autenticacion/registro.html", {"form": form})
 
     def post(self, request):
         form=UserCreationForm(request.POST)
@@ -34,7 +36,24 @@ class registro(View):
                 messages.error(request, form.error_messages[msg])
 
             #Devuelve el formulario como estaba antes (los campos validos) + los errores detallados  
-            return render(request, "gestion_usuarios/registro.html", {"form": form})
+            return render(request, "autenticacion/registro.html", {"form": form})"""
+    
+def registro(request):
+    #Entra una vez que aprieta el boton de enviar
+    if request.method=="POST":
+        miFormulario=FormularioRegistro(request.POST)
+    
+        if miFormulario.is_valid():
+            infForm=miFormulario.cleaned_data
+
+            #Aca seria registrar la info
+
+    else:
+        #Si entra al else, seria el formulario vacio, para que llene los datos
+        miFormulario=FormularioRegistro()
+
+    
+    return render(request, "autenticacion/registro.html", {"form": miFormulario})
 
 
 def cerrar_sesion(request):
@@ -42,10 +61,11 @@ def cerrar_sesion(request):
     return redirect('inicio')
 
 
-def iniciar_sesion(request):
+"""def iniciar_sesion(request):
 
     #Si se apreto el boton:
     if request.method=="POST":
+        return redirect('inicio')
         form=AuthenticationForm(request, data=request.POST)
     
         if form.is_valid():
@@ -70,4 +90,19 @@ def iniciar_sesion(request):
     #Mientras que no se apriete el boton:
         
     form=AuthenticationForm()
-    return render(request, "gestion_usuarios/login.html", {"form": form})
+    return render(request, "autenticacion/login.html", {"form": form})"""
+
+def iniciar_sesion(request):
+    if request.method=="POST":
+        miFormulario=FormularioAutenticacion(request.POST)
+    
+        if miFormulario.is_valid():
+            infForm=miFormulario.cleaned_data
+
+            #Aca seria guardar chequear la data en base de datos y "entrar" a la sesion
+
+    else:
+        miFormulario=FormularioAutenticacion()
+
+    
+    return render(request, "autenticacion/login.html", {"form": miFormulario})
