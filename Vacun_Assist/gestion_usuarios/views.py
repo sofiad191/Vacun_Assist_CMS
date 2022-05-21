@@ -1,6 +1,6 @@
 import re
 from django.shortcuts import render, redirect
-from django.views.generic import View
+#from django.views.generic import View
 from django.contrib.auth import login, logout, authenticate
 #from django.contrib import messages
 from gestion_usuarios.forms import FormularioAutenticacion, FormularioRegistro
