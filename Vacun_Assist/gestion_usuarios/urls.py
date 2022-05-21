@@ -1,9 +1,11 @@
 from django.urls import path
 
-from gestion_usuarios import views
+from .views import inicio, registro, cerrar_sesion, iniciar_sesion
 
 urlpatterns = [
-    path('', views.hola, name= "hola"),
-    path('hola', views.hola, name="hola"),
-    path('chau', views.chau, name="chau"),
+    path('', inicio, name= "inicio"),
+    path('registro',registro.as_view(), name="registro"),
+    path('iniciar_sesion', iniciar_sesion, name="iniciar_sesion"),
+    path('cerrar_sesion', cerrar_sesion, name="cerrar_sesion"),
+
 ]
