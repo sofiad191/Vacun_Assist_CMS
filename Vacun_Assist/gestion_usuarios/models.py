@@ -10,4 +10,5 @@ class Usuario (models.Model):
     fecha_nacimiento=models.DateField()
     direccion=models.CharField(max_length=30)
     email=models.EmailField()
+    contraseña=models.CharField(max_length=60)
     codigo=models.CharField(max_length=4)

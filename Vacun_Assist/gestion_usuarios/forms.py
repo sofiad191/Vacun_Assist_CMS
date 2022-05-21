@@ -8,6 +8,8 @@ class FormularioRegistro(forms.Form):
     fecha_nacimiento=forms.DateField()
     direccion=forms.CharField(max_length=30)
     email=forms.EmailField()
+    contraseña1=forms.CharField(max_length=30)
+    contraseña2=forms.CharField(max_length=30)
 
 
 class FormularioAutenticacion(forms.Form):
