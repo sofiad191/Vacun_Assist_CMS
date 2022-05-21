@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Vacun_Assist.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["C/Users/Sofia/Documents/Facultad/Vacun_assist/Vacun_Assist_CMS/Vacun_Assist/gestion_usuarios/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
