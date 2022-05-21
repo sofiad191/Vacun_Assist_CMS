@@ -12,3 +12,10 @@ class Usuario (models.Model):
     email=models.EmailField()
     contraseña=models.CharField(max_length=60)
     codigo=models.CharField(max_length=4)
+    #Falta una lista de turnos, que pertenecen al usuario, puede estar vacia.
+
+class Turno(models.Model):
+    fecha=models.DateField()
+    vacuna=models.CharField(max_length=40)
+    # usuario_a_vacunar=models.Usuario() puede ser un campo de tipo usuario, o un campo de tipo dni 
+    vacunatorio=models.CharField(max_length=40)

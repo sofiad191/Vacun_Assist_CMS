@@ -26,6 +26,13 @@ def registro(request):
             #Validar el DNI con el renaper
             #Validar que las contraseñas son iguales 
 
+
+            us=Usuario.objects.filter(email=infForm['email'])
+            if us.__len__ != 0:
+                #Si el mail ya esta registrado, error
+                pass
+
+
             if infForm['contraseña1'] != infForm['contraseña2']:
                 pass
             else:
@@ -37,7 +44,7 @@ def registro(request):
             usuario.save()
 
 
-            mensaje="Se registro tu informacion en VacunAssist! Tu codigo para iniciar sesion es: %s" %codigo_unico #Esto no se si esta bien
+            mensaje="Se registro tu informacion en VacunAssist! Tu codigo para iniciar sesion es: %s" %codigo_unico
             send_mail("Registro completo en VacunAssist", mensaje, 'vacunassist.cms@gmail.com', infForm['email'],)
 
 
@@ -68,7 +75,11 @@ def iniciar_sesion(request):
             #Validar contraseña
             #Validar codigo
 
-
+            #Se podrian chequear todos los campos por separado
+            us=Usuario.objects.filter(email=infForm['email'], contraseña=infForm['contraseña'],codigo=infForm['codigo'])
+            if us.__len__ == 0:
+                #No existen estos datos en la base de datos
+                pass   
 
     else:
         #Si entra al else, seria el formulario vacio, para que llene los datos
@@ -76,3 +87,30 @@ def iniciar_sesion(request):
 
     
     return render(request, "autenticacion/login.html", {"form": miFormulario})
+
+
+def cargar_info_covid(request):
+
+    
+    return render(request, "cargar_info/info_covid.html")
+
+def cargar_info_fiebre_a(request):
+
+
+    return render(request, "cargar_info/info_fiebre_a.html")
+
+def cargar_info_gripe(request): 
+
+
+    return render(request, "cargar_info/info_gripe.html")
+
+
+def modificar_perfil(request):
+
+
+    return render(request, "gestion_usuarios/modificar_perfil.html")
+
+def estatus_turno(request):
+
+
+    return render(request, "gestion_usuarios/estatus_turno.html")

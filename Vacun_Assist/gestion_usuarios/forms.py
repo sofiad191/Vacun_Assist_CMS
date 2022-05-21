@@ -16,3 +16,16 @@ class FormularioAutenticacion(forms.Form):
     email=forms.EmailField()
     contraseña=forms.CharField(max_length=100)
     codigo=forms.CharField(max_length=4)
+
+
+class FormularioCovid(forms.Form):
+    #Cantidad de dosis aplicadas
+    pass
+
+class FormularioFiebreA(forms.Form):
+    #En que año se aplico
+    pass
+
+class FormularioGripe(forms.Form):
+    #Fecha de la ultima aplicacion
+    pass
