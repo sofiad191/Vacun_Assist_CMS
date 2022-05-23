@@ -32,7 +32,7 @@ def registro(request):
         miFormulario=FormularioRegistro()
 
     
-    return render(request, "autenticacion/registro.html")
+    return render(request, "autenticacion/registro.html", {"form": miFormulario})
 
 
 def cerrar_sesion(request):
