@@ -1,0 +1,14 @@
+{% extends "gestion_usuarios/base.html" %}
+
+{% block content %}
+<html>
+    <body>
+        Te has registrado exitosamente! 
+        <p> Revisa tu casilla de mail para obtener el codigo y poder iniciar sesion!</p>
+
+        <p> <a href="{% url 'iniciar_sesion' %}"> Iniciar sesion </a> </p>
+        <p> <a href="{% url 'inicio' %}"> Volver al inicio </a> </p>
+
+    </body>
+</html>
+{% endblock %}

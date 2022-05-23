@@ -1,48 +1,31 @@
 {% extends "gestion_usuarios/base.html" %}
 
+{% block titulo %}
+Registro
+{% endblock titulo %} 
 
-{% block content %}
+{% block body %}
 
-<html>
-    <body>
-        <form action="/inicio" method="POST"> {% csrf_token %}
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title"> Completa tus datos:</strong>
+        </div>
+        <div class="card-body">
+        <form method="POST"> {% csrf_token} 
+            {{form.as_p}}
+            <div class="card-footer">
+                <a href="{% url 'inicio' %}" class="btn-btn-danger">
+                    Cancelar 
+                </button>
+                <button type="submit" class="btn-btn-success">
+                    Registrar
+                </button>
 
-            <p>
-                Nombre: <input type="text" name="nombre"> 
-            </p>
-
-            <p>
-                Apellido: <input type="text" name="apellido"> 
-            </p>
-
-            <p>
-                DNI: <input type="text" name="dni"> 
-            </p>
-
-            <p>
-                Fecha de nacimiento: <input type="text" name="fecha_nacimiento"> 
-            </p>
-
-            <p>
-                Direccion: <input type="text" name="direccion"> 
-            </p>
-    
-            <p>
-                Email: <input type="text" name="email"> 
-            </p>
-    
-        
-            <p>
-                Contraseña: <input type="text" name="contraseña1"> 
-            </p>
-
-            <p>
-                Por favor, repita la contraseña: <input type="text" name="contraseña2"> 
-            </p>
-    
-            <input type="submit" value="Registrarme">
+            </div>
         </form>
-    </body>
-</html>
+    </div>
+    </div>
 
-{% endblock %}
+{% endblock body %}
+
+

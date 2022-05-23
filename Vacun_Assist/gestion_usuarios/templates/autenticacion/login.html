@@ -1,29 +1,30 @@
 {% extends "gestion_usuarios/base.html" %}
 
 
-{% block content %}
+{% block titulo %}
+Iniciar sesion
+{% endblock titulo %} 
 
-<html>
-    <body>
-        <form action="/inicio" method="POST"> {% csrf_token %}
-            <p>
-                Email: <input type="text" name="email"> 
-            </p>
-    
-            <p>
-                Contraseña: <input type="text" name="contraseña"> 
-            </p>
+{% block body %}
 
-            <p>
-                Codigo: <input type="text" name="contraseña"> 
-            </p>
-    
-            <input type="submit" value="Iniciar sesion">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title"> Ingresa tus datos:</strong>
+        </div>
+        <div class="card-body">
+        <form method="POST"> {% csrf_token} 
+            {{form.as_p}}
+            <div class="card-footer">
+                <a href="{% url 'inicio' %}" class="btn-btn-danger">
+                    Cancelar 
+                </button>
+                <button type="submit" class="btn-btn-success">
+                    Iniciar sesion
+                </button>
+
+            </div>
         </form>
-    </body>
-</html>
+    </div>
+    </div>
 
-
-
-{% endblock %}
-
+{% endblock body %}
