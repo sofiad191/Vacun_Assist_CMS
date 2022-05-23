@@ -48,9 +48,6 @@ def iniciar_sesion(request):
         if miFormulario.is_valid():
             infForm=miFormulario.cleaned_data #Aca se guarda toda la info que se lleno en los formularios
 
-            #Validar que este el mail en la base de datos
-            #Validar contraseña
-            #Validar codigo
 
             usuario=authenticate(infForm['email'], infForm['password'], infForm['codigo'])
 

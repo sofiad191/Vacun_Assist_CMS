@@ -84,3 +84,12 @@ class Usuario(AbstractBaseUser):
     def is_staff(self):
         #Retorna si es administrador o no
         return self.usuario_administrador
+
+
+#Agregar "Lista de turnos" a Usuario
+#Definir modelo de turno
+
+class Turno(models.Model):
+    fecha=models.DateField()
+    vacuna=models.CharField(max_length=30)
+    usuario=Usuario() # esto ???
