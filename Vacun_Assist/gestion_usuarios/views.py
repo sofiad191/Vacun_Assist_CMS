@@ -22,8 +22,8 @@ def registro(request):
             #Validar el DNI con el renaper
 
             #%infForm['codigo']
-            mensaje="Se registro tu informacion en VacunAssist! Tu codigo para iniciar sesion es: %s" %(infForm['codigo'])
-            send_mail("Registro completo en VacunAssist", mensaje, 'vacunassist.cms@gmail.com', infForm['email'],)
+            #mensaje="Se registro tu informacion en VacunAssist! Tu codigo para iniciar sesion es: %s" %(infForm['codigo'])
+            #send_mail("Registro completo en VacunAssist", mensaje, 'vacunassist.cms@gmail.com', infForm['email'],)
 
             return render(request, "autenticacion/reg_exito.html")
 
